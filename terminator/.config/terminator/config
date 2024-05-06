@@ -14,7 +14,7 @@
   [[testing]]
     icon_bell = False
     cursor_color = "#aaaaaa"
-    font = Fira Code Medium 12
+    font = Fira Code Medium 15.19921875
     show_titlebar = False
     scrollbar_position = hidden
     use_system_font = False
