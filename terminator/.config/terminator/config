@@ -2,12 +2,21 @@
 [keybindings]
 [profiles]
   [[default]]
-    palette = "#15161e:#f7768e:#9ece6a:#e0af68:#7aa2f7:#bb9af7:#7dcfff:#a9b1d6:#414868:#f7768e:#9ece6a:#e0af68:#7aa2f7:#bb9af7:#7dcfff:#9d7cd8"
+    icon_bell = False
     background_color = "#1a1b26"
-    foreground_color = "#c0caf5"
     cursor_color = "#aaaaaa"
-    font = Fira Code Medium 14
+    font = Fira Code Medium 16
+    foreground_color = "#c0caf5"
     show_titlebar = False
+    scrollbar_position = hidden
+    palette = "#15161e:#f7768e:#9ece6a:#e0af68:#7aa2f7:#bb9af7:#7dcfff:#a9b1d6:#414868:#f7768e:#9ece6a:#e0af68:#7aa2f7:#bb9af7:#7dcfff:#9d7cd8"
+    use_system_font = False
+  [[testing]]
+    icon_bell = False
+    cursor_color = "#aaaaaa"
+    font = Fira Code Medium 12
+    show_titlebar = False
+    scrollbar_position = hidden
     use_system_font = False
 [layouts]
   [[default]]
@@ -17,4 +26,5 @@
     [[[child1]]]
       type = Terminal
       parent = window0
+      profile = default
 [plugins]
