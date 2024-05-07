@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 alias vim="nvim"
 alias v="nvim"
+alias vdot="cd ~/.dotfiles && v ."
