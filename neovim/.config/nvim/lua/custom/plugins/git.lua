@@ -10,7 +10,7 @@ return {
     'ibhagwan/fzf-lua',
   },
   config = function()
-    require('neogit').setup()
+    require('neogit').setup {}
 
     vim.keymap.set('n', '<leader>ng', '<cmd>Neogit<cr>', { desc = 'Open [N]eo[G]it' })
   end,

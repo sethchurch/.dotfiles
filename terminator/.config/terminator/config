@@ -17,6 +17,7 @@
     font = Fira Code Medium 15.19921875
     show_titlebar = False
     scrollbar_position = hidden
+    palette = "#000000:#241f31:#000000:#aa5500:#000000:#aa00aa:#000000:#aaaaaa:#000000:#ff5555:#000000:#ffff55:#000000:#ff55ff:#000000:#ffffff"
     use_system_font = False
 [layouts]
   [[default]]
