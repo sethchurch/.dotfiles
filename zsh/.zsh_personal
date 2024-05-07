@@ -2,9 +2,8 @@ export XDG_CONFIG_HOME=$HOME/.config
 PERSONAL=$XDG_CONFIG_HOME/personal
 source $PERSONAL/env
 
-# load all in .config/personal
 for i in `find -L $PERSONAL`; do
   source $i
 done
 
-bindkey -s ^f "tmux-sessionizer\"
+bindkey -s ^f "tmux-sessionizer\n"
