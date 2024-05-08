@@ -2,3 +2,4 @@
 alias vim="nvim"
 alias v="nvim"
 alias vdot="cd ~/.dotfiles && v ."
+alias vnvim="cd ~/.dotfiles/neovim/.config/nvim && v ."
