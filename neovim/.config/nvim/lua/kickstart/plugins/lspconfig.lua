@@ -130,6 +130,7 @@ return { -- LSP Configuration & Plugins
     vim.list_extend(ensure_installed, {
       'stylua', -- Used to format Lua code
       'eslint-lsp', -- Eslint over eslint_d
+      'prettierd',
       'ansiblels',
       'yamlls',
     })
