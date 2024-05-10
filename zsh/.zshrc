@@ -80,7 +80,8 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 plugins=(git zsh-autosuggestions zsh-npm-scripts-autocomplete)
 
 source $ZSH/oh-my-zsh.sh
-source ~/.zsh_personal
+source ~/.zsh_personal 2>/dev/null
+source ~/.zsh_work 2>/dev/null
 
 # User configuration
 
