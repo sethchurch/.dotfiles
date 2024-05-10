@@ -7,23 +7,7 @@
 --    :Lazy update
 require('lazy').setup({
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
-  require 'kickstart.plugins.comment',
-  require 'kickstart.plugins.gitsigns',
-  require 'kickstart.plugins.which-key',
-  require 'kickstart.plugins.telescope',
-  require 'kickstart.plugins.lspconfig',
-  require 'kickstart.plugins.conform',
-  require 'kickstart.plugins.cmp',
-  require 'kickstart.plugins.tokyonight',
-  require 'kickstart.plugins.todo-comments',
-  require 'kickstart.plugins.mini',
-  require 'kickstart.plugins.treesitter',
-  require 'kickstart.plugins.debug',
-  require 'kickstart.plugins.lint',
-  require 'kickstart.plugins.autopairs',
-  require 'kickstart.plugins.neo-tree',
-  require 'kickstart.plugins.gitsigns',
-  { import = 'custom.plugins' },
+  { import = 'plugins' },
 }, {
   ui = {
     -- If you are using a Nerd Font: set icons to an empty table which will use the
