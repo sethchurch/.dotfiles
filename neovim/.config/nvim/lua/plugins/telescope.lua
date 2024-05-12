@@ -16,6 +16,13 @@ return { -- Fuzzy Finder (files, lsp, etc)
   },
   config = function()
     require('telescope').setup({
+      defaults = {
+        sorting_strategy = 'descending',
+        path_display = function(_, path)
+          local tail = require('telescope.utils').path_tail(path)
+          return string.format('%s (%s)', tail, path)
+        end,
+      },
       extensions = {
         ['ui-select'] = {
           require('telescope.themes').get_dropdown(),
