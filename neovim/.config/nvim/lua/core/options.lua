@@ -53,3 +53,4 @@ vim.opt.scrolloff = 10
 vim.opt.shiftwidth = 2
 
 vim.opt.mouse = ''
+vim.opt.showtabline = 0
