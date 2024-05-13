@@ -5,7 +5,6 @@
   breadcast_off = None
   close_term = None
   close_window = None
-  copy = None
   cycle_next = None
   cycle_prev = None
   edit_window_title = None
@@ -28,7 +27,6 @@
   new_terminator = None
   new_window = None
   next_tab = None
-  paste = None
   prev_tab = None
   reset = None
   reset_clear = None

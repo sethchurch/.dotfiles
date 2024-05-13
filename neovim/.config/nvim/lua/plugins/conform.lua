@@ -6,7 +6,7 @@ return {
       {
         '<leader>f',
         function()
-          vim.cmd('TSToolsAddMissingImports sync')
+          pcall(vim.cmd, 'TSToolsAddMissingImports sync')
           require('conform').format({ async = true, lsp_fallback = true })
         end,
         mode = '',

@@ -34,6 +34,6 @@ autocmd({ 'BufWritePre' }, {
 autocmd({ 'BufEnter', 'FocusLost' }, {
   callback = function()
     runSaveActions()
-    vim.cmd('silent update')
+    pcall(vim.cmd, 'silent update')
   end,
 })
