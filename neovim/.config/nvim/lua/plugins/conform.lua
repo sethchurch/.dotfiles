@@ -39,6 +39,7 @@ return {
         -- javascript = { { 'prettierd', 'prettier' } },
         -- javascriptreact = { { 'prettierd', 'prettier' } },
         -- typescript = { { 'prettierd', 'prettier' } },
+        prisma = { { 'prisma-language-server' } },
         typescriptreact = {},
       },
     },

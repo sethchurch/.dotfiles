@@ -95,6 +95,7 @@ return {
 
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
+    capabilities.textDocument.completion.completionItem.snippetSupport = false
 
     local servers = {
       lua_ls = {
@@ -122,10 +123,18 @@ return {
     require('mason-tool-installer').setup({ ensure_installed = ensure_installed })
 
     require('mason-lspconfig').setup({
+      capabilities = {
+        workspace = {
+          didChangeWatchedFiles = {
+            dynamicRegistration = true,
+          },
+        },
+      },
       handlers = {
         function(server_name)
           local server = servers[server_name] or {}
           server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
+          server.capabilities.textDocument.completion.snippetSupport = false
           require('lspconfig')[server_name].setup(server)
         end,
       },
