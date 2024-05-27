@@ -17,8 +17,11 @@ return {
       -- - sr)'  - [S]urround [R]eplace [)] [']
       require('mini.surround').setup()
 
+      -- Autopairs
+      require('mini.pairs').setup()
+
       -- Simple and easy statusline.
-      --  You could remove this setup call if you don't like it,
+      --  You could remove this setup call if you don't like its
       --  and try some other statusline plugin
       local statusline = require('mini.statusline')
       -- set use_icons to true if you have a Nerd Font
@@ -31,10 +34,6 @@ return {
       statusline.section_location = function()
         return '%2l:%-2v'
       end
-
-      -- ... and there is more!
-      --  Check out: https://github.com/echasnovski/mini.nvim
     end,
   },
 }
--- vim: ts=2 sts=2 sw=2 et

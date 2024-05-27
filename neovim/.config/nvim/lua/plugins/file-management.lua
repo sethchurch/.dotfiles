@@ -1,5 +1,3 @@
--- Various plugins focused on managing and navigating files
-
 return {
   {
     'otavioschwanck/arrow.nvim',

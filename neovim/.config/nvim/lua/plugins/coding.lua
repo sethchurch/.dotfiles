@@ -1,5 +1,30 @@
 return {
-  { -- Autocompletion
+  {
+    'piersolenski/wtf.nvim',
+    dependencies = {
+      'MunifTanjim/nui.nvim',
+    },
+    opts = {},
+    keys = {
+      {
+        'gw',
+        mode = { 'n', 'x' },
+        function()
+          require('wtf').ai()
+        end,
+        desc = 'Debug diagnostic with AI',
+      },
+      {
+        mode = { 'n' },
+        'gW',
+        function()
+          require('wtf').search()
+        end,
+        desc = 'Search diagnostic with Google',
+      },
+    },
+  },
+  {
     'hrsh7th/nvim-cmp',
     event = 'InsertEnter',
     dependencies = {
@@ -19,12 +44,12 @@ return {
           -- `friendly-snippets` contains a variety of premade snippets.
           --    See the README about individual language/framework/plugin snippets:
           --    https://github.com/rafamadriz/friendly-snippets
-          -- {
-          --   'rafamadriz/friendly-snippets',
-          --   config = function()
-          --     require('luasnip.loaders.from_vscode').lazy_load()
-          --   end,
-          -- },
+          {
+            'rafamadriz/friendly-snippets',
+            config = function()
+              require('luasnip.loaders.from_vscode').lazy_load()
+            end,
+          },
         },
       },
       'saadparwaiz1/cmp_luasnip',
