@@ -6,11 +6,6 @@ end
 
 local autocmd = vim.api.nvim_create_autocmd
 
-local runSaveActions = function()
-  pcall(vim.cmd, 'TSToolsAddMissingImports sync')
-  pcall(require('conform').format, { async = false, lsp_fallback = true })
-end
-
 autocmd('TextYankPost', {
   desc = 'Highlight when yanking (copying) text',
   group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
@@ -30,15 +25,16 @@ autocmd('FileType', {
 -- Before Save Events
 autocmd({ 'BufWritePre' }, {
   callback = function()
-    runSaveActions()
+    pcall(require('conform').format, { async = false, lsp_fallback = true })
   end,
 })
 
 -- Save and Format on enter and exit
 autocmd({ 'BufEnter', 'FocusLost' }, {
   callback = function()
-    runSaveActions()
-    pcall(vim.cmd, 'silent update')
+    pcall(function()
+      vim.cmd('silent update')
+    end)
   end,
 })
 
