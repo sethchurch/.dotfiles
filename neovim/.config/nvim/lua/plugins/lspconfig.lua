@@ -9,19 +9,23 @@ return {
         settings = {
           tsserver_file_preferences = {
             includeInlayParameterNameHints = 'all',
+            importModuleSpecifierPreference = 'non-relative',
           },
         },
       })
     end,
   },
-
+  {
+    'luckasRanarison/tailwind-tools.nvim',
+    dependencies = { 'nvim-treesitter/nvim-treesitter' },
+  },
   {
     'neovim/nvim-lspconfig',
     dependencies = {
       { 'williamboman/mason.nvim', config = true },
       'williamboman/mason-lspconfig.nvim',
       'WhoIsSethDaniel/mason-tool-installer.nvim',
-      { 'folke/neodev.nvim', opts = {}, config = true },
+      { 'folke/lazydev.nvim', opts = {}, config = true },
     },
     config = function()
       vim.api.nvim_create_autocmd('LspAttach', {

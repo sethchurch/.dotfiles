@@ -86,6 +86,11 @@ return {
           },
           opts = { skip = true },
         },
+        -- show macro recording start
+        {
+          view = "notify",
+          filter = { event = "msg_showmode" },
+        },
       },
       presets = {
         bottom_search = true,

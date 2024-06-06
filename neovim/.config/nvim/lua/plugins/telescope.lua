@@ -12,8 +12,13 @@ return {
           return vim.fn.executable('make') == 1
         end,
       },
-      { 'nvim-telescope/telescope-ui-select.nvim' },
-      { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
+      {
+        'nvim-telescope/telescope-ui-select.nvim',
+      },
+      {
+        'nvim-tree/nvim-web-devicons',
+        enabled = vim.g.have_nerd_font,
+      },
     },
     config = function()
       require('telescope').setup({
@@ -24,6 +29,16 @@ return {
             return string.format('%s (%s)', tail, path)
           end,
         },
+        vimgrep_arguments = {
+          'rg',
+          '--color=never',
+          '--no-heading',
+          '--with-filename',
+          '--line-number',
+          '--column',
+          '--smart-case',
+          '-u',
+        },
         extensions = {
           ['ui-select'] = {
             require('telescope.themes').get_dropdown(),
@@ -31,7 +46,6 @@ return {
         },
       })
 
-      -- Enable Telescope extensions if they are installed
       pcall(require('telescope').load_extension, 'fzf')
       pcall(require('telescope').load_extension, 'ui-select')
 
@@ -59,7 +73,7 @@ return {
         builtin.find_files({ hidden = true, follow = true })
       end
 
-      map('n', '<leader><leader>', searchHiddenFiles, { desc = 'Search Files' })
+      -- map('n', '<leader><leader>', searchHiddenFiles, { desc = 'Search Files' })
       map('n', '<leader>sf', searchHiddenFiles, { desc = 'Search Files' })
 
       map('n', '<leader>s/', function()
@@ -76,6 +90,7 @@ return {
       { '<leader>sM', '<cmd>Telescope man_pages<cr>', desc = 'Search Man Pages' },
       { '<leader>sm', '<cmd>Telescope marks<cr>', desc = 'Jump to Mark' },
       { '<leader>so', '<cmd>Telescope vim_options<cr>', desc = 'Options' },
+      { '<leader>si', '<cmd>Telescope import<cr>', desc = 'Import' },
     },
   },
   {
@@ -84,5 +99,22 @@ return {
     config = function()
       require('telescope').load_extension('import')
     end,
+  },
+  {
+    'danielfalk/smart-open.nvim',
+    branch = '0.2.x',
+    config = function()
+      require('telescope').load_extension('smart_open')
+      vim.keymap.set('n', '<leader><leader>', function()
+        require('telescope').extensions.smart_open.smart_open()
+      end, { noremap = true, silent = true })
+    end,
+    dependencies = {
+      'kkharji/sqlite.lua',
+      -- Only required if using match_algorithm fzf
+      { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+      -- Optional.  If installed, native fzy will be used when match_algorithm is fzy
+      { 'nvim-telescope/telescope-fzy-native.nvim' },
+    },
   },
 }

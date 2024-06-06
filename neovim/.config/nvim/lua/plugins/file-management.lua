@@ -8,20 +8,6 @@ return {
     },
   },
   {
-    'simonmclean/triptych.nvim',
-    event = 'VeryLazy',
-    dependencies = {
-      'nvim-lua/plenary.nvim',
-      'nvim-tree/nvim-web-devicons',
-    },
-    keys = {
-      { '\\', ':Triptych<CR>', { desc = 'Open Triptych' } },
-    },
-    config = function()
-      require('triptych').setup()
-    end,
-  },
-  {
     'stevearc/oil.nvim',
     opts = {},
     -- Optional dependencies

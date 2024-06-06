@@ -12,6 +12,10 @@ return {
           pcall(function()
             vim.cmd('TSToolsAddMissingImports')
           end)
+          pcall(function()
+            vim.cmd('TSToolsRemoveUnused')
+          end)
+
           require('conform').format({ async = true, lsp_fallback = true })
         end,
         mode = '',
@@ -41,6 +45,8 @@ return {
         javascriptreact = { { 'prettierd', 'prettier' } },
         typescript = { { 'prettierd', 'prettier' } },
         typescriptreact = { { 'prettierd', 'prettier' } },
+        jsonc = { { 'prettierd', 'prettier' } },
+        json = { { 'prettierd', 'prettier' } },
         prisma = { { 'prisma-language-server' } },
       },
     },
