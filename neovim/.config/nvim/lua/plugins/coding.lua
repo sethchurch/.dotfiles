@@ -34,4 +34,12 @@ return {
       { "<leader>si", "<cmd>Telescope import<cr>", desc = "Import" },
     },
   },
+  {
+    "hrsh7th/nvim-cmp",
+    opts = {
+      experimental = {
+        ghost_text = false,
+      },
+    },
+  },
 }

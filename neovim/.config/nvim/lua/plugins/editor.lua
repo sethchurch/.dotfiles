@@ -11,4 +11,7 @@ return {
       },
     },
   },
+  {
+    "tpope/vim-sleuth",
+  },
 }
