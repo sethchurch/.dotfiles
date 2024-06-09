@@ -2,3 +2,4 @@
 addToPathFront $HOME/.local/scripts
 addToPathFront $HOME/.local/bin
 addToPathFront /opt/nvim-linux64/bin
+addToPathFront /mnt/c/Windows/System32/WindowsPowerShell/v1.0

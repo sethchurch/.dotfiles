@@ -13,11 +13,8 @@ map({ "n" }, "<leader>ww", "<cmd>w<cr><esc>", { desc = "Save File" })
 -- Command to toggle inline diagnostics
 vim.api.nvim_create_user_command("DiagnosticsToggleVirtualText", function()
   vim.diagnostic.config({ virtual_text = not vim.diagnostic.config().virtual_text })
-end, {
-  desc = "Toggle Inline Diagnostics",
-})
-
-map("n", "<Leader>td", ':lua vim.cmd("DiagnosticsToggleVirtualText")<CR>', { desc = "Toggle Inline Diagnostics", noremap = true, silent = true })
+end, { desc = "Toggle Inline Diagnostics" })
+map("n", "<Leader>uD", ':lua vim.cmd("DiagnosticsToggleVirtualText")<CR>', { desc = "Toggle Inline Diagnostics", noremap = true, silent = true })
 
 -- Navigate splits
 map("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
@@ -30,3 +27,9 @@ map("n", "<C-Up>", "<cmd>resize +2<cr>", { desc = "Increase Window Height" })
 map("n", "<C-Down>", "<cmd>resize -2<cr>", { desc = "Decrease Window Height" })
 map("n", "<C-Left>", "<cmd>vertical resize -2<cr>", { desc = "Decrease Window Width" })
 map("n", "<C-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase Window Width" })
+
+-- Disable arrow keys in normal mode
+map("n", "<left>", '<cmd>echo "Use h to move!!"<CR>')
+map("n", "<right>", '<cmd>echo "Use l to move!!"<CR>')
+map("n", "<up>", '<cmd>echo "Use k to move!!"<CR>')
+map("n", "<down>", '<cmd>echo "Use j to move!!"<CR>')
