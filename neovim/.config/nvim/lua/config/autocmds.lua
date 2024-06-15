@@ -4,15 +4,6 @@
 
 local autocmd = vim.api.nvim_create_autocmd
 
--- Save and Format on enter and exit
-autocmd({ "BufEnter", "FocusLost" }, {
-  callback = function()
-    pcall(function()
-      vim.cmd("silent update")
-    end)
-  end,
-})
-
 autocmd("FileType", {
   pattern = "help",
   callback = function()

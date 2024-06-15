@@ -11,6 +11,9 @@ vim.opt.mouse = ""
 -- Remove whitespace characters
 vim.opt.list = false
 
+-- Autowrite
+vim.opt.autowriteall = true
+
 -- WSL clipboard integration
 if vim.fn.has("wsl") == 1 then
   vim.g.clipboard = {
