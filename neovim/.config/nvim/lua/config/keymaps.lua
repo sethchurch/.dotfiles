@@ -5,7 +5,7 @@
 local map = vim.keymap.set
 
 -- open tmux sessionizer
-map("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
+map("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer.sh<CR>")
 
 -- Save File
 map({ "n" }, "<leader>ww", "<cmd>w<cr><esc>", { desc = "Save File" })

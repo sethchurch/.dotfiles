@@ -1,0 +1,14 @@
+gui:
+  nerdFontsVersion: "3"
+  showPanelJumps: false
+  showBottomLine: true
+
+keybinding:
+  universal:
+    prevBlock-alt: <c-k>
+    nextBlock-alt: <c-j>
+    prevTab: h
+    nextTab: l
+  commits:
+    moveDownCommit: <disabled>
+    moveUpCommit: <disabled>

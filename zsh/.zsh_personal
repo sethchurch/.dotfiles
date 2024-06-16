@@ -6,7 +6,7 @@ for i in `find -L $PERSONAL`; do
   source $i
 done
 
-bindkey -s ^f "tmux-sessionizer\n"
+bindkey -s ^f "tmux-sessionizer.sh\n"
 
 export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
 --color=fg:#c0caf5,bg:#1a1b26,hl:#ff9e64 \
