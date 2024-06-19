@@ -9,5 +9,13 @@ return {
         ["neotest-vitest"] = {},
       },
     },
+    keys = {
+      {
+        "<leader>tu",
+        mode = { "n", "x" },
+        "<cmd>!tmux new -d pnpm test:ui<CR>",
+        desc = "Open Test UI",
+      },
+    },
   },
 }
