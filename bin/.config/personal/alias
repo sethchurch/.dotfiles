@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-alias vim="nvim"
-alias v="nvim"
+alias vim="clear && nvim"
+alias v="clear && nvim"
 alias lvim="NVIM_APPNAME=lazyvim nvim"
 alias vdot="cd ~/.dotfiles && v ."
 alias vnvim="cd ~/.dotfiles/neovim/.config/nvim && v ."
