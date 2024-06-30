@@ -1,0 +1,61 @@
+{
+  "authLoader": {
+    "body": [
+      "export const loader = async ({ params, request }: LoaderFunctionArgs) => {",
+      "    const authSession = await requireAuthSession(request);",
+      "    return json({});",
+      "};"
+    ],
+    "prefix": "aldr"
+  },
+  "clientLoader": {
+    "body": [
+      "export const loader = async ({ params, request }: LoaderFunctionArgs) => {",
+      "    const { authSession, client } = await requireAuthSessionWithClient(request);",
+      "    return json({});",
+      "};"
+    ],
+    "prefix": "cldr"
+  },
+  "meta": {
+    "prefix": "metafn",
+    "body": [
+      "export const meta: MetaFunction<typeof loader> = ({ data }) => [{",
+      "  title: 'Title',",
+      "}]"
+    ]
+  },
+  "Links Function": {
+    "body": [
+      "export const links: LinksFunction = () => [",
+      "    { rel: \"stylesheet\", href: $1 },",
+      "];"
+    ],
+    "prefix": "linksfn"
+  },
+  "Action Function": {
+    "body": [
+      "export const action: ActionFunction = async ({ request }: ActionFunctionArgs) => {",
+      "    const formData = await request.formData();",
+      "",
+      "    return json({});",
+      "}"
+    ],
+    "prefix": "actionfn"
+  },
+  "Remix Headers": {
+    "prefix": "remix-headers",
+    "body": [
+      "export const headers = ({ loaderHeaders, parentHeaders }) => {",
+      "  return {",
+      "    \"$1\": $2",
+      "  };",
+      "};"
+    ],
+    "description": "Function to define headers by route."
+  },
+  "Use Loader Data": {
+    "prefix": "ul",
+    "body": ["const { $1 } = useLoaderData<typeof loader>();"]
+  }
+}

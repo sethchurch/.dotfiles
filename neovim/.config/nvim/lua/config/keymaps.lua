@@ -35,9 +35,11 @@ map("n", "<down>", '<cmd>echo "Use j to move!!"<CR>')
 
 map("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer.sh<CR>", { desc = "Open new tmux session" })
 
-map("n", "<leader>wc", function()
+map("n", "<leader>rc", function()
   local command = vim.fn.input("Command - tmux window")
   if command:len() > 0 then
     vim.cmd("!tmux new-window -d " .. command)
   end
-end, { desc = "Run command in new tmux window" })
+end, { desc = "Run command" })
+
+map("n", "<leader>rd", "<cmd>!tmux new-window -d pnpm dev<CR>", { desc = "Run dev server" })

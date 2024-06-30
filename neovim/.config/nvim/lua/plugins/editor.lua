@@ -14,4 +14,12 @@ return {
   {
     "tpope/vim-sleuth",
   },
+  {
+    "folke/which-key.nvim",
+    opts = {
+      defaults = {
+        ["<leader>r"] = { name = "+run" },
+      },
+    },
+  },
 }
