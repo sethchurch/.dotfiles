@@ -17,6 +17,7 @@ return {
             "typescriptreact",
             "typescript.tsx",
           },
+          autoUseWorkspaceTsdk = true,
           settings = {
             complete_function_calls = true,
             vtsls = {

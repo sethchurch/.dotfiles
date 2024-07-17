@@ -10,7 +10,6 @@ return {
   {
     "stevearc/oil.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
-    -- commit = "96368e13e9b1aaacc570e4825b8787307f0d05e1",
     config = function()
       local oil = require("oil")
 
@@ -19,6 +18,9 @@ return {
 
       -- Opts
       oil.setup({
+        keymaps = {
+          ["<C-s>"] = false,
+        },
         view_options = {
           show_hidden = true,
         },
