@@ -29,3 +29,21 @@ if vim.fn.has("wsl") == 1 then
     cache_enabled = 0,
   }
 end
+
+-- Dotenv
+vim.filetype.add({
+  extension = {
+    conf = "conf",
+    env = "dotenv",
+    tiltfile = "tiltfile",
+    Tiltfile = "tiltfile",
+  },
+  filename = {
+    [".env"] = "dotenv",
+    ["tsconfig.json"] = "jsonc",
+    [".yamlfmt"] = "yaml",
+  },
+  pattern = {
+    ["%.env%.[%w_.-]+"] = "dotenv",
+  },
+})

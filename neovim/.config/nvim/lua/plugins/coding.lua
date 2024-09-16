@@ -4,7 +4,10 @@ return {
     dependencies = {
       "MunifTanjim/nui.nvim",
     },
-    opts = {},
+    opts = {
+      popup_type = "vertical",
+      openai_model_id = "gpt-4o",
+    },
     keys = {
       {
         "gw",
