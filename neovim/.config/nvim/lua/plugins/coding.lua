@@ -67,6 +67,12 @@ return {
     },
   },
   {
+    "dmmulroy/tsc.nvim",
+    config = function()
+      require("tsc").setup()
+    end,
+  },
+  {
     "razak17/tailwind-fold.nvim",
     opts = {},
     dependencies = { "nvim-treesitter/nvim-treesitter" },

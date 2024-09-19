@@ -20,6 +20,11 @@ return {
           autoUseWorkspaceTsdk = true,
           settings = {
             complete_function_calls = true,
+            tsserver = {
+              disableAutomaticTypeAcquisition = true,
+              disableAutomaticDependencyResolution = true,
+              maxTsServerMemory = 8192,
+            },
             vtsls = {
               enableMoveToFileCodeAction = true,
               autoUseWorkspaceTsdk = true,
