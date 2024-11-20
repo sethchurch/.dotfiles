@@ -1,4 +1,5 @@
 return {
+  { "pmizio/typescript-tools.nvim", dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" }, opts = {} },
   {
     "neovim/nvim-lspconfig",
     opts = {
@@ -9,6 +10,7 @@ return {
           enabled = false,
         },
         vtsls = {
+          enabled = false,
           filetypes = {
             "javascript",
             "javascriptreact",
@@ -20,14 +22,10 @@ return {
           autoUseWorkspaceTsdk = true,
           settings = {
             complete_function_calls = true,
-            tsserver = {
-              disableAutomaticTypeAcquisition = true,
-              disableAutomaticDependencyResolution = true,
-              maxTsServerMemory = 8192,
-            },
             vtsls = {
               enableMoveToFileCodeAction = true,
               autoUseWorkspaceTsdk = true,
+              maxTsServerMemory = 8192,
               experimental = {
                 completion = {
                   enableServerSideFuzzyMatch = true,
@@ -35,6 +33,7 @@ return {
               },
             },
             typescript = {
+              maxTsServerMemory = 8192,
               updateImportsOnFileMove = { enabled = "always" },
               preferences = {
                 importModuleSpecifier = "non-relative",

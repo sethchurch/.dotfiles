@@ -11,9 +11,8 @@ return {
       },
     },
   },
-  {
-    "tpope/vim-sleuth",
-  },
+  { "tpope/vim-sleuth" },
+  { "chrisgrieser/nvim-early-retirement", config = true, event = "VeryLazy" },
   {
     "folke/which-key.nvim",
     opts = {
