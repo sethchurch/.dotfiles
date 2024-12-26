@@ -1,5 +1,5 @@
 return {
-  { "pmizio/typescript-tools.nvim", dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" }, opts = {} },
+  -- { "pmizio/typescript-tools.nvim", dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" }, opts = {} },
   {
     "neovim/nvim-lspconfig",
     opts = {
@@ -10,7 +10,7 @@ return {
           enabled = false,
         },
         vtsls = {
-          enabled = false,
+          enabled = true,
           filetypes = {
             "javascript",
             "javascriptreact",

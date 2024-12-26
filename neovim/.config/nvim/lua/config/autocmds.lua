@@ -10,3 +10,11 @@ autocmd("FileType", {
     vim.cmd("wincmd H")
   end,
 })
+
+-- vim.api.nvim_create_autocmd("BufWritePre", {
+--   pattern = { "*.js", "*.jsx", "*.ts", "*.tsx" },
+--   callback = function()
+--     vim.lsp.buf.code_action({ context = { only = { "source.addMissingImports.ts" }, diagnostics = {} }, apply = true })
+--     vim.lsp.buf.code_action({ context = { only = { "source.removeUnused.ts" }, diagnostics = {} }, apply = true })
+--   end,
+-- })
