@@ -50,7 +50,7 @@
     icon_bell = False
     background_color = "#1a1b26"
     cursor_color = "#aaaaaa"
-    font = FiraCode Nerd Font 16
+    font = FiraMono Nerd Font 16
     foreground_color = "#c0caf5"
     show_titlebar = False
     scrollbar_position = hidden
