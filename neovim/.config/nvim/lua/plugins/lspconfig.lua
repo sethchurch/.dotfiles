@@ -82,6 +82,20 @@ return {
           },
         },
         svelte = {
+          settings = {
+            svelte = {
+              plugin = {
+                css = {
+                  completions = {
+                    emmet = false,
+                  },
+                },
+              },
+            },
+            emmet = {
+              showExpandedAbbreviation = "never",
+            },
+          },
           capabilities = {
             workspace = {
               didChangeWatchedFiles = false,
