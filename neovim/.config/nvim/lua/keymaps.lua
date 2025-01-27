@@ -65,3 +65,25 @@ autocmd("BufWritePre", {
     pcall(function() vim.cmd("EslintFixAll") end)
   end,
 })
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = {
+    "help",
+    "startuptime",
+    "qf",
+    "lspinfo",
+    "man",
+    "checkhealth",
+    "neotest-output-panel",
+    "neotest-summary",
+    "lazy",
+    "Avante",
+    "AvanteSelectedFiles",
+    "AvanteInput",
+  },
+  command = [[
+          nnoremap <buffer><silent> q :close<CR>
+          nnoremap <buffer><silent> <ESC> :close<CR>
+          set nobuflisted
+      ]],
+})

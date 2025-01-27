@@ -33,8 +33,8 @@ return {
 
           -- [[ Code Based Actions ]]
           map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction", { "n", "x" })
-          map("<leader>cM", EnderVim.lsp.action["source.addMissingImports"], "Add [M]issing Imports", { "n", "x" })
-          map("<leader>cu", EnderVim.lsp.action["source.removeUnusedImports"], "Removed [U]nused Imports", { "n", "x" })
+          map("<leader>cM", "<cmd>TSToolsAddMissingImports<cr>", "Add [M]issing Imports", { "n", "x" })
+          map("<leader>cu", "<cmd>TSToolsRemoveUnusedImports<cr>", "Removed [U]nused Imports", { "n", "x" })
           map("<leader>co", EnderVim.lsp.action["source.organizeImports"], "[O]rganize Imports", { "n", "x" })
           map("<leader>cA", EnderVim.lsp.action["source.fixAll"], "Fix All", { "n", "x" })
           map("<leader>cr", vim.lsp.buf.rename, "[R]ename")
