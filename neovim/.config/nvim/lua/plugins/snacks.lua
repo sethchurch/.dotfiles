@@ -26,6 +26,7 @@ return {
       },
       lazygit = { enabled = true },
       zen = { enabled = true },
+      notifier = { enabled = true },
       words = { enabled = false },
     },
     keys = {

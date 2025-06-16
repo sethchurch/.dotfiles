@@ -41,7 +41,7 @@ return {
           map("<leader>cR", "<cmd>LspRestart<cr>", "[R]estart LSP")
 
           local client = vim.lsp.get_client_by_id(event.data.client_id)
-          if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
+          if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
             local highlight_augroup = vim.api.nvim_create_augroup("kickstart-lsp-highlight", { clear = false })
             vim.api.nvim_create_autocmd(
               { "CursorHold", "CursorHoldI" },
@@ -106,10 +106,11 @@ return {
 
       require("mason").setup()
       local ensure_installed = vim.tbl_keys(servers or {})
-      vim.list_extend(ensure_installed, { "tailwindcss-language-server", "stylua" })
+      vim.list_extend(ensure_installed, { "prettierd", "tailwindcss-language-server", "stylua" })
       require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
       require("mason-lspconfig").setup({
+        automatic_enable = true,
         ensure_installed = {},
         automatic_installation = {},
         handlers = {

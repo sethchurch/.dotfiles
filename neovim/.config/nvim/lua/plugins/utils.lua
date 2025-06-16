@@ -3,6 +3,7 @@ return {
   {
     "folke/snacks.nvim",
     priority = 1000,
+    version = "*",
     lazy = false,
     ---@type snacks.Config
     opts = {
@@ -27,6 +28,7 @@ return {
       lazygit = { enabled = true },
       zen = { enabled = true },
       words = { enabled = false },
+      image = { enabled = false },
     },
     keys = {
       { "<leader>.", function() Snacks.scratch() end, desc = "Toggle Scratch Buffer" },

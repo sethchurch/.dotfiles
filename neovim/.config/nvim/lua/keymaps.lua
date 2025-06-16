@@ -35,6 +35,7 @@ map("n", "[q", "<cmd>cprev<cr>", { desc = "Previous Item" })
 -- Open Lazy
 map("n", "<leader>ol", "<cmd>Lazy<cr>", { desc = "[O]pen Lazy" })
 map("n", "<leader>om", "<cmd>Mason<cr>", { desc = "[O]pen Mason" })
+map("n", "<leader>qq", "<cmd>qa!<cr>", { desc = "Force Quit" })
 
 -- Lint
 map("n", "<leader>cl", function()
@@ -60,9 +61,9 @@ autocmd("FileType", {
 })
 
 -- Fix all Eslint Errors
-autocmd("BufWritePre", {
+autocmd("BufWritePost", {
   callback = function()
-    pcall(function() vim.cmd("EslintFixAll") end)
+    pcall(function() vim.cmd("LspEslintFixAll") end)
   end,
 })
 

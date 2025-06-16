@@ -33,12 +33,31 @@ return {
     "yetone/avante.nvim",
     event = "VeryLazy",
     lazy = false,
-    version = false, -- Set this to "*" to always pull the latest release version, or set it to false to update to the latest code changes.
+    version = "*", -- Set this to "*" to always pull the latest release version, or set it to false to update to the latest code changes.
     opts = {
       -- add any opts here
       provider = "copilot",
-      copilot = {
-        model = "claude-3.5-sonnet",
+      auto_suggestions_provider = "copilot",
+      providers = {
+        copilot = {
+          endpoint = "https://api.githubcopilot.com",
+          model = "claude-3.5-sonnet",
+          proxy = nil, -- [protocol://]host[:port] Use this proxy
+          allow_insecure = false, -- Allow insecure server connections
+          timeout = 30000, -- Timeout in milliseconds
+          reasoning_effort = "high",
+        },
+      },
+      file_selector = {
+        provider = "telescope",
+      },
+      hints = {
+        enabled = true,
+      },
+      mappings = {
+        toggle = {
+          hint = "<leader>ta",
+        },
       },
     },
     -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
