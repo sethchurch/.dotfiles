@@ -2,7 +2,7 @@ return {
   -- [[ TypeScript Integration ]]
   {
     "dmmulroy/tsc.nvim",
-    config = function() require("tsc").setup() end,
+    opts = function() require("tsc").setup() end,
     keys = {
       { "<leader>tt", "<cmd>TSC<cr>" },
     },
@@ -21,7 +21,7 @@ return {
   {
     "OlegGulevskyy/better-ts-errors.nvim",
     dependencies = { "MunifTanjim/nui.nvim" },
-    config = {
+    opts = {
       keymaps = {
         toggle = "<leader>dd", -- default '<leader>dd'
         go_to_definition = "<leader>dx", -- default '<leader>dx'

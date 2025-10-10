@@ -2,7 +2,7 @@ local o = vim.opt
 
 o.mouse = ""
 o.number = true
-o.relativenumber = true
+-- o.relativenumber = true -- this kills the coworker
 
 -- Don't show the mode, since it's already in the status line
 o.showmode = false
@@ -51,3 +51,6 @@ o.autowriteall = true
 
 --  Disable tabline
 o.showtabline = 0
+
+-- Disable swapfiles
+o.swapfile = false

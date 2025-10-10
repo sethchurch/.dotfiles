@@ -5,6 +5,7 @@ return {
   {
     -- Main LSP Configuration
     "neovim/nvim-lspconfig",
+    commit = "782dda9",
     dependencies = {
       { "williamboman/mason.nvim", config = true },
       "williamboman/mason-lspconfig.nvim",

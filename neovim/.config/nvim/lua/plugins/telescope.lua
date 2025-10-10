@@ -1,6 +1,7 @@
 return {
   {
     "piersolenski/telescope-import.nvim",
+    commit = "abce03c71791bd27fc9043b62b5483467875b758",
     iependencies = "nvim-telescope/telescope.nvim",
     config = function() require("telescope").load_extension("import") end,
     keys = {

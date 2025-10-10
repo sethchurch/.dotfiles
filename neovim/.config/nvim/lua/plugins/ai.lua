@@ -30,10 +30,44 @@ return {
     config = function() require("copilot").setup({}) end,
   },
   {
+    "greggh/claude-code.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim", -- Required for git operations
+    },
+    config = function() require("claude-code").setup() end,
+  },
+  {
     "yetone/avante.nvim",
     event = "VeryLazy",
     lazy = false,
     version = "*", -- Set this to "*" to always pull the latest release version, or set it to false to update to the latest code changes.
+
+    -- opts = {
+    --   provider = "openai",
+    --   auto_suggestions_provider = "copilot",
+    --   providers = {
+    --     copilot = {
+    --       endpoint = "https://api.githubcopilot.com",
+    --       model = "claude-3.5-sonnet",
+    --       proxy = nil, -- [protocol://]host[:port] Use this proxy
+    --       allow_insecure = false, -- Allow insecure server connections
+    --       timeout = 30000, -- Timeout in milliseconds
+    --       reasoning_effort = "high",
+    --     },
+    --   },
+    --   file_selector = {
+    --     provider = "telescope",
+    --   },
+    --   hints = {
+    --     enabled = true,
+    --   },
+    --   mappings = {
+    --     toggle = {
+    --       hint = "<leader>ta",
+    --     },
+    --   },
+    -- },
+
     opts = {
       -- add any opts here
       provider = "copilot",
@@ -60,13 +94,13 @@ return {
         },
       },
     },
-    -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
+    -- if you want to build from source then do `make build_from_source=true`
     build = "make",
-    -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
+    -- build = "powershell -executionpolicy bypass -file build.ps1 -buildfromsource false" -- for windows
     dependencies = {
       "stevearc/dressing.nvim",
       "nvim-lua/plenary.nvim",
-      "MunifTanjim/nui.nvim",
+      "muniftanjim/nui.nvim",
       "echasnovski/mini.pick", -- for file_selector provider mini.pick
       "nvim-telescope/telescope.nvim", -- for file_selector provider telescope
       "hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
@@ -74,7 +108,7 @@ return {
       "zbirenbaum/copilot.lua", -- for providers='copilot'
       {
         -- support for image pasting
-        "HakonHarnes/img-clip.nvim",
+        "hakonharnes/img-clip.nvim",
         event = "VeryLazy",
         opts = {
           -- recommended settings
@@ -84,22 +118,22 @@ return {
             drag_and_drop = {
               insert_mode = true,
             },
-            -- required for Windows users
+            -- required for windows users
             use_absolute_path = true,
           },
         },
       },
       {
-        -- Make sure to set this up properly if you have lazy=true
-        "MeanderingProgrammer/render-markdown.nvim",
+        -- make sure to set this up properly if you have lazy=true
+        "meanderingprogrammer/render-markdown.nvim",
         opts = {
-          file_types = { "markdown", "Avante" },
+          file_types = { "markdown", "avante" },
         },
-        ft = { "markdown", "Avante" },
+        ft = { "markdown", "avante" },
       },
     },
     keys = {
-      { "<leader>ax", "<cmd>AvanteClear<cr>", desc = "avante: clear chat" },
+      { "<leader>ax", "<cmd>avanteclear<cr>", desc = "avante: clear chat" },
     },
   },
   -- {
