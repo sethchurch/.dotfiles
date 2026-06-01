@@ -24,62 +24,85 @@ return {
     },
   },
   {
-    "zbirenbaum/copilot.lua",
-    cmd = "Copilot",
-    event = "InsertEnter",
-    config = function() require("copilot").setup({}) end,
-  },
-  {
-    "greggh/claude-code.nvim",
-    dependencies = {
-      "nvim-lua/plenary.nvim", -- Required for git operations
+    -- Claude Code: MCP server for real-time context/diffs; claude itself runs in a tmux pane
+    "coder/claudecode.nvim",
+    lazy = false,
+    dependencies = { "folke/snacks.nvim" },
+    opts = {
+      auto_start = true,
+      terminal = { provider = "none" },
     },
-    config = function() require("claude-code").setup() end,
+    keys = {
+      {
+        "<leader>aa",
+        function()
+          if not vim.env.TMUX then
+            vim.notify("Claude: not inside a tmux session ($TMUX not set)", vim.log.levels.WARN)
+            return
+          end
+          -- If any other pane exists in this window, assume it's claude — hide it
+          local current_pane = vim.fn.system("tmux display-message -p '#{pane_id}'"):gsub("%s+", "")
+          local panes_output = vim.fn.system("tmux list-panes -F '#{pane_id}'")
+          for pane_id in panes_output:gmatch("(%%%d+)") do
+            if pane_id ~= current_pane then
+              vim.fn.system("tmux break-pane -d -s " .. pane_id .. " -n __claude__")
+              return
+            end
+          end
+          -- No extra pane — check for hidden claude window to restore
+          local windows = vim.fn.system("tmux list-windows -F '#{window_name}'")
+          if windows:match("__claude__") then
+            vim.fn.system("tmux join-pane -h -s __claude__")
+            return
+          end
+          -- Open a fresh claude pane
+          local ok, cc = pcall(require, "claudecode")
+          local port = ok and cc.state and cc.state.port
+          local result = vim.fn.system(
+            "tmux split-window -h"
+              .. " -e ENABLE_IDE_INTEGRATION=true"
+              .. " -e FORCE_CODE_TERMINAL=true"
+              .. (port and (" -e CLAUDE_CODE_SSE_PORT=" .. port) or "")
+              .. " claude"
+          )
+          if vim.v.shell_error ~= 0 then vim.notify("Claude: tmux error: " .. result, vim.log.levels.ERROR) end
+        end,
+        desc = "Toggle Claude tmux pane",
+      },
+      {
+        "<leader>ax",
+        function()
+          local panes = vim.fn.system("tmux list-panes -s -F '#{pane_id} #{pane_current_command}'")
+          local claude_pane = panes:match("(%%%d+)%s+claude")
+          if claude_pane then vim.fn.system("tmux kill-pane -t " .. claude_pane) end
+          local windows = vim.fn.system("tmux list-windows -F '#{window_name}'")
+          if windows:match("__claude__") then vim.fn.system("tmux kill-window -t __claude__") end
+        end,
+        desc = "Claude Code: Kill tmux pane",
+      },
+      { "<leader>as", "<cmd>ClaudeCodeSend<cr>", mode = "v", desc = "Claude Code: Send selection" },
+      { "<leader>ad", "<cmd>ClaudeCodeDiffAccept<cr>", desc = "Claude Code: Accept diff" },
+      { "<leader>aD", "<cmd>ClaudeCodeDiffDeny<cr>", desc = "Claude Code: Reject diff" },
+    },
   },
   {
+    -- Avante: inline editing only (<leader>ae on a visual selection)
     "yetone/avante.nvim",
     event = "VeryLazy",
     lazy = false,
-    version = "*", -- Set this to "*" to always pull the latest release version, or set it to false to update to the latest code changes.
-
-    -- opts = {
-    --   provider = "openai",
-    --   auto_suggestions_provider = "copilot",
-    --   providers = {
-    --     copilot = {
-    --       endpoint = "https://api.githubcopilot.com",
-    --       model = "claude-3.5-sonnet",
-    --       proxy = nil, -- [protocol://]host[:port] Use this proxy
-    --       allow_insecure = false, -- Allow insecure server connections
-    --       timeout = 30000, -- Timeout in milliseconds
-    --       reasoning_effort = "high",
-    --     },
-    --   },
-    --   file_selector = {
-    --     provider = "telescope",
-    --   },
-    --   hints = {
-    --     enabled = true,
-    --   },
-    --   mappings = {
-    --     toggle = {
-    --       hint = "<leader>ta",
-    --     },
-    --   },
-    -- },
+    version = "*",
 
     opts = {
-      -- add any opts here
-      provider = "copilot",
-      auto_suggestions_provider = "copilot",
+      provider = "openai",
+      auto_suggestions_provider = "openai",
       providers = {
         copilot = {
-          endpoint = "https://api.githubcopilot.com",
-          model = "claude-3.5-sonnet",
-          proxy = nil, -- [protocol://]host[:port] Use this proxy
-          allow_insecure = false, -- Allow insecure server connections
-          timeout = 30000, -- Timeout in milliseconds
-          reasoning_effort = "high",
+          endpoint = "https://api.openai.com/v1",
+          api_key = "OPENAI_API_KEY",
+          model = "gpt-5.4-mini",
+          proxy = nil,
+          allow_insecure = false,
+          timeout = 30000,
         },
       },
       file_selector = {
@@ -88,8 +111,15 @@ return {
       hints = {
         enabled = true,
       },
+      -- Disable avante's chat panel bindings — use claude-code for chat.
+      -- Only keep <leader>ae for inline edit.
       mappings = {
+        ask = "<leader>aA", -- hidden away; use Claude Code instead
+        edit = "<leader>ae",
+        refresh = "<leader>aR",
+        focus = "<leader>aF",
         toggle = {
+          default = "<leader>aT",
           hint = "<leader>ta",
         },
       },
@@ -132,9 +162,7 @@ return {
         ft = { "markdown", "avante" },
       },
     },
-    keys = {
-      { "<leader>ax", "<cmd>avanteclear<cr>", desc = "avante: clear chat" },
-    },
+    keys = {},
   },
   -- {
   --   "zbirenbaum/copilot.lua",

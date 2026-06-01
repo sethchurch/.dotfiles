@@ -1,56 +1,46 @@
 local o = vim.opt
 
-o.mouse = ""
+-- UI
 o.number = true
 -- o.relativenumber = true -- this kills the coworker
-
--- Don't show the mode, since it's already in the status line
 o.showmode = false
+o.showtabline = 0
+o.cursorline = true
+o.signcolumn = "yes"
+o.scrolloff = 10
+o.list = true
+o.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
+o.inccommand = "split"
 
--- Sync clipboard between OS and Neovim.
-vim.schedule(function() o.clipboard = "unnamedplus" end)
+-- Mouse
+o.mouse = ""
 
--- Enable break indent
+-- Editing
 o.breakindent = true
-
--- Save undo history
 o.undofile = true
+o.autowriteall = true
+o.swapfile = false
 
--- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
+-- Search
 o.ignorecase = true
 o.smartcase = true
 
--- Keep signcolumn on by default
-o.signcolumn = "yes"
-
--- Decrease update time
-o.updatetime = 250
-
--- Decrease mapped sequence wait time
-o.timeoutlen = 300
-
--- Configure how new splits should be opened
+-- Splits
 o.splitright = true
 o.splitbelow = true
 
--- Sets how neovim will display certain whitespace characters in the editor.
-o.list = true
-o.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
+-- Timing
+o.updatetime = 250
+o.timeoutlen = 300
 
--- Preview substitutions live, as you type!
-o.inccommand = "split"
+-- Clipboard (deferred to avoid startup delay)
+vim.schedule(function() o.clipboard = "unnamedplus" end)
 
--- Show which line your cursor is on
-o.cursorline = true
-
--- Minimal number of screen lines to keep above and below the cursor.
-o.scrolloff = 10
-
--- Autowrite
-o.autowriteall = true
-
---  Disable tabline
-o.showtabline = 0
-
--- Disable swapfiles
-o.swapfile = false
+-- Auto-reload files changed on disk without prompting (e.g. when Claude Code edits them)
+o.autoread = true
+vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold", "CursorHoldI" }, {
+  pattern = "*",
+  callback = function()
+    if vim.fn.mode() ~= "c" then pcall(vim.cmd, "checktime") end
+  end,
+})

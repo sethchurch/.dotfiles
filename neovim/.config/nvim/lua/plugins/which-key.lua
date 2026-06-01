@@ -49,6 +49,7 @@ return {
         { "<leader>s", group = "[S]earch" },
         { "<leader>w", group = "[W]orkspace" },
         { "<leader>t", group = "[T]oggle" },
+        { "<leader>l", group = "Int[l] Lens", mode = { "n", "v" } },
         { "<leader>h", group = "Git [H]unk", mode = { "n", "v" } },
       },
     },

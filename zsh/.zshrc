@@ -37,3 +37,5 @@ export NVM_DIR="$HOME/.config/nvm"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+
+

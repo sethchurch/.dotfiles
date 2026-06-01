@@ -9,7 +9,7 @@ return {
     opts = {
       dashboard = {
         enabled = true,
-        sections = {
+        rections = {
           { section = "header", padding = 0 },
           {
             section = "terminal",
