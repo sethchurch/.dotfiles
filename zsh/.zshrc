@@ -39,3 +39,4 @@ export NVM_DIR="$HOME/.config/nvm"
 
 
 
+[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
