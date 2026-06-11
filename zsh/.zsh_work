@@ -1,1 +1,6 @@
 set -o allexport && source ~/repos/.secrets && set +o allexport
+
+# cps dev console (installed by cps-ansible to stable paths). Guarded, so this
+# is a no-op on machines without it.
+[ -f ~/.config/1password/service-account.env ] && source ~/.config/1password/service-account.env
+[ -f /usr/local/share/cps/cps.sh ] && source /usr/local/share/cps/cps.sh
