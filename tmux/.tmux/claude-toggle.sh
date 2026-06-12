@@ -16,5 +16,5 @@ else
   tmux split-window -h \
     -e ENABLE_IDE_INTEGRATION=true \
     -e FORCE_CODE_TERMINAL=true \
-    claude
+    "$HOME/.local/bin/claude"
 fi
